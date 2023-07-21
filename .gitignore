@@ -249,4 +249,4 @@ cython_debug/
 .idea/
 push.sh
 
-
+cmake-build-debug/
