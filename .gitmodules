@@ -1,0 +1,9 @@
+[submodule "mashibingcode/algorithmbasic2020"]
+	path = mashibingcode/algorithmbasic2020
+	url = https://github.com/algorithmzuo/algorithmbasic2020.git
+[submodule "mashibingcode/coding-for-great-offer"]
+	path = mashibingcode/coding-for-great-offer
+	url = https://github.com/algorithmzuo/coding-for-great-offer.git
+[submodule "mashibingcode/class-notes"]
+	path = mashibingcode/class-notes
+	url = https://github.com/algorithmzuo/class-notes.git
