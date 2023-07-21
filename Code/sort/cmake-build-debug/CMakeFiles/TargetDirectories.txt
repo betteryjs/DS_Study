@@ -1,4 +1,0 @@
-/home/yjs/CPP/DS_Study/Code/sort/cmake-build-debug/CMakeFiles/insertsort.dir
-/home/yjs/CPP/DS_Study/Code/sort/cmake-build-debug/CMakeFiles/bubble_sort.dir
-/home/yjs/CPP/DS_Study/Code/sort/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/yjs/CPP/DS_Study/Code/sort/cmake-build-debug/CMakeFiles/rebuild_cache.dir
