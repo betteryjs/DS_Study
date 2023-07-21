@@ -95,12 +95,7 @@ public:
 
 
 int main() {
-//    vector<int> nums4{2, 3, 56, 89, 26, 65, 19, 16, 23};
-//
-//    InsertSort selectSort;
-//    InsertSort::pprint("in", nums4);
-//    selectSort.insertSort(nums4);
-//    InsertSort::pprint("out", nums4);
+
 
     BubbleSort bubbleSort;
     bubbleSort.run();
