@@ -1,0 +1,7 @@
+#add_executable(sqlist sqlist.cpp)
+#add_executable(linklist linklist.cpp)
+#add_executable(dlinklist dlinklist.cpp)
+#add_executable(fastSlowNodeFindmin fastSlowNodeFindmin.cpp)
+#add_executable(margeSortList2 margeSortList2.cpp)
+add_executable(returnsThePenultimateKNodeOfTheLinkedList 返回链表的倒数第k个节点.cpp)
+add_executable(printLinkedListFromEndToEnd 从尾到头打印链表.cpp)
