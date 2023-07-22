@@ -1,0 +1,1 @@
+add_executable(fast_pow fast_pow.cpp)
