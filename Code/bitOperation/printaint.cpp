@@ -19,8 +19,15 @@ string pringInt( unsigned int & num){
 
 
 int main(){
-    unsigned int c=1;
+    unsigned int c=16;
     cout << pringInt(c)<<endl;
+    c|= 1<<5;
+    cout << pringInt(c)<<endl;
+    c^= 1<<1;
+    cout << pringInt(c)<<endl;
+
+
+
 
 
 
