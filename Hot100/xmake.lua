@@ -15,35 +15,34 @@ set_languages("cxx17")
 --target("quickSort3way")
 --    set_kind("binary")
 --    add_files("/home/yjs/CPP/DS_Study/Code/sort/quickSort3way.cpp")
-target("Hot")
-    set_kind("binary")
-    add_files("/home/yjs/CPP/DS_Study/Hot100/1两数之和.cpp")
+--target("Hot")
+--    set_kind("binary")
+--    add_files("/home/yjs/CPP/DS_Study/Hot100/1两数之和.cpp")
 
 --target("test")
 --    set_kind("binary")
 --    add_files("src/tutorial-01-wget.cc")
 --    add_packages("workflow")
 --    add_packages("nlohmann_json")
+function all_examples()
+    local res = {}
+    for _, x in ipairs(os.files("*.cpp")) do
+        local item = {}
+        local s = path.filename(x)
 
---function all_examples()
---    local res = {}
---    for _, x in ipairs(os.files("*.cpp")) do
---        local item = {}
---        local s = path.filename(x)
---
---        table.insert(item, s:sub(1, #s - 3))       -- target
---        table.insert(item, path.relative(x, "."))  -- source
---        table.insert(res, item)
---
---    end
---    return res
---end
---
---for _, example in ipairs(all_examples()) do
---    target(example[1])
---    set_kind("binary")
---    add_files(example[2])
---end
+        table.insert(item, s:sub(1, #s - 3))       -- target
+        table.insert(item, path.relative(x, "."))  -- source
+        table.insert(res, item)
+
+    end
+    return res
+end
+
+for _, example in ipairs(all_examples()) do
+    target(example[1])
+    set_kind("binary")
+    add_files(example[2])
+end
 
 
 
