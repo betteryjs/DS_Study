@@ -253,4 +253,7 @@ cmake-build-debug/
 build/
 add_crontab.py
 Book/
+.xmake/
+
+
 
