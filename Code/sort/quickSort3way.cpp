@@ -8,16 +8,6 @@
 using namespace std;
 
 
-
-
-
-
-
-
-
-
-
-
 class QuickSort3way {
 public:
 public:
@@ -32,45 +22,64 @@ public:
 public:
 
 
-
-
-
-    void quickSort1(vector<int> &  arr) {
+    void quickSort1(vector<int> &arr) {
         if (arr.empty() || arr.size() < 2) {
             return;
         }
         quickSort1(arr, 0, arr.size() - 1);
     }
 
-    void quickSort1(vector<int> & arr, int lo, int hi) {
-       if(hi<=lo) return;
-       int lt=lo,i=lo+1,gt=hi;
-       int pivot=arr[lo];
+    void quickSort1(vector<int> &arr, int start, int end) {
+        if (start >= end) return;
+        int lt = start;
+        int eq = start;
+        int gt = end;
+        int pivot = arr[eq];
 
-        while (i<=gt){
-
-            if(arr[i]<pivot) swap(arr[i++],arr[lt++]);
-            if(arr[i]>pivot) swap(arr[i],arr[gt--]);
-            else i++;
+        while (eq <= gt) {
+            if (arr[eq] > pivot) swap(arr[eq], arr[gt--]);
+            else if (arr[eq] < pivot) swap(arr[eq++], arr[lt++]);
+            else eq++;
         }
-        quickSort1(arr,lo,lt-1);
-        quickSort1(arr,gt+1,hi);
-
+        quickSort1(arr, start, lt - 1);
+        quickSort1(arr, gt + 1, end);
 
 
     }
+
+    void threeWayPartition(vector<int> &nums) {
+        threeWayPartition(nums, 0, nums.size() - 1);
+    }
+
+    void threeWayPartition(vector<int> &nums, int start, int end) {
+        if (start >= end) {
+            return;
+        }
+        int lt = start;
+        int eq = start;
+        int gt = end;
+        int base = nums[eq];
+        while (eq <= gt) {
+            if (nums[eq] > base) swap(nums[eq], nums[gt--]);
+            else if (nums[eq] < base) swap(nums[lt++], nums[eq++]);
+            else eq++;
+        }
+        threeWayPartition(nums, start, lt - 1);
+        threeWayPartition(nums, gt + 1, end);
+    }
+
     void comparator(vector<int> &arr) {
         sort(arr.begin(), arr.end());
     }
 
     vector<int> generateRandomArray(int maxSize, int maxValue) {
 
-        uniform_real_distribution<> u(0,1);
-        uniform_int_distribution<unsigned > u2(0,maxValue + 1);
+        uniform_real_distribution<> u(0, 1);
+        uniform_int_distribution<unsigned> u2(0, maxValue + 1);
         default_random_engine e;
-        vector<int> arr(maxSize*u(e));
+        vector<int> arr(maxSize * u(e));
         for (int i = 0; i < arr.size(); i++) {
-            arr[i]=u2(e);
+            arr[i] = u2(e);
         }
         return arr;
 
@@ -90,25 +99,23 @@ public:
             vector<int> arr2(arr);
             this->quickSort1(arr1);
             comparator(arr2);
-            if (arr1!=arr2) {
+            if (arr1 != arr2) {
                 // 打印arr1
                 // 打印arr2
                 succeed = false;
                 for (int j = 0; j < arr.size(); j++) {
-                    cout << arr[j] <<  " ";
+                    cout << arr[j] << " ";
                 }
                 cout << endl;
                 break;
             }
         }
-        cout << (succeed? "Nice!" : "Fucking fucked!")<<endl;
+        cout << (succeed ? "Nice!" : "Fucking fucked!") << endl;
         vector<int> arr = generateRandomArray(maxSize, maxValue);
-        pprint("arr before ",arr);
+        pprint("arr before ", arr);
         this->quickSort1(arr);
-        pprint("arr after",arr);
+        pprint("arr after", arr);
     }
-
-
 
 
 };
