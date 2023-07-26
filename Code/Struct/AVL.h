@@ -65,7 +65,7 @@ AVLNode<Key> * RR_Rotate(  AVLNode<Key> * k2);
 
       k3                         k3                       k2
      /  \                       /  \                     /  \
-    k1   D                     k2   D                   k1   k3
+    k1   D       RR            k2   D      LL           k1   k3
    /  \         ==>           /  \        ==>          / \   / \
   A    k2                    k1   C                   A  B  C   D
       /  \                  /  \
