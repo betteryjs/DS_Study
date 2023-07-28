@@ -21,7 +21,7 @@ public:
             return;
         }
         int  i = left - 1, j = right + 1;
-        swap(nums[left],nums[left+rand()%(right-left)]);
+        swap(nums[left],nums[left+rand()%(right-left+1)]);
         int x = nums[left];
         while (i < j) {
              while (nums[++i] < x); // 找到第一个大于等于x的元素

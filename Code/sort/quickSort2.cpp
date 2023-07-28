@@ -29,7 +29,8 @@ public:
          cout << endl;
      }
      int quickSortParse(vector<int> & arr, int low, int hig) {
-          vector<int>::value_type pivot =arr[low];
+         swap(arr[low],arr[low+rand()%(hig-low+1)]);
+         vector<int>::value_type pivot =arr[low];
           while (low != hig) {
               while (low < hig && arr[hig] >= pivot  ) {
                   hig--;
