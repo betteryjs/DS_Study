@@ -16,22 +16,44 @@ class Solution{
 
 public:
 
-    ListNode *  deleteListNode (ListNode* head){
-        // 带头节点 头节点不带值
-        ListNode* cur= head->next;
-        ListNode* pre=head; // pre指向头结点
-        ListNode* min=cur; // 假设第一个结点为最小值的结点
-        while (cur->next!= nullptr){
-            if(cur->next->val < min->val){
-                pre=cur;
-                min=cur->next;
+    ListNode * selectSort(ListNode* head){
+
+        ListNode * dummyHead= new ListNode(-1);
+        ListNode * dummyCurser=dummyHead;
+//        ListNode * baseHead=head;
+
+        while (head!= nullptr){
+            ListNode * cur=head;
+            ListNode * prevMin=head;
+            ListNode * Min=head;
+            while(cur->next!= nullptr){
+                cout << " node is "<<cur->val<<endl;
+
+                if(Min->val<=cur->next->val){
+                    cur=cur->next;
+                }else{
+                    prevMin=cur;
+                    Min=prevMin->next;
+                    cur=cur->next;
+                }
             }
-            cur=cur->next;
+            cout << "delete node is "<<Min->val<<endl;
+            prevMin->next=Min->next;
+            Min->next= nullptr;
+            dummyCurser->next=Min;
+            dummyCurser=dummyCurser->next;
+            cout << "prev min is " << prevMin->val <<endl;
+
+
         }
-        pre->next=min->next; // 从链表上删除最小值结点
-        free (min);
-        return head;
+
+
+
+
+        dummyCurser->next= nullptr;
+        return  dummyHead->next;
     }
+
 
 };
 
@@ -114,12 +136,10 @@ int main() {
 
     buildlist.PrintLinkList(head);
     Solution * solution=new Solution;
-    ListNode * node=new ListNode(-1);
-    ListNode * nodes=solution->deleteListNode(head->next);
+    ListNode * node=solution->selectSort(head->next);
 //
 //
     buildlist.PrintLinkList(head);
-    cout << nodes->val<<endl;
     delete solution;
 
 
