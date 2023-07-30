@@ -10,57 +10,39 @@ using namespace std;
 
 class Solution {
 public:
-    vector<vector<string>> groupAnagrams(vector<string> &strs) {
-        unordered_map<string, vector<string>> unorderedMap;
+    vector <vector<string>> groupAnagrams(vector <string> &strs) {
+        unordered_map <string, vector<string>> unorderedMap;
         for (string &str: strs) {
             string tmp = str;
             sort(tmp.begin(), tmp.end());
             unorderedMap[tmp].emplace_back(str);
-
         }
-
-        vector<vector<string>> ans;
+        vector <vector<string>> ans;
         for (auto it: unorderedMap) {
             ans.emplace_back(it.second);
-
         }
         return ans;
-
-
     }
 };
 
 
 class Solution2 {
 public:
-    vector<vector<string>> groupAnagrams(vector<string>& strs) {
-        vector<vector<string>> ans;
-        map<string,vector<string>> hashTable;
+    vector <vector<string>> groupAnagrams(vector <string> &strs) {
+        vector <vector<string>> ans;
+        map <string, vector<string>> hashTable;
 
-
-        for (auto  str: strs) {
-            string  sts=string(26,'0');
-
-            for (auto c : str) {
-                ++sts[c-'a'];
+        for (auto str: strs) {
+            string sts = string(26, '0');
+            for (auto c: str) {
+                ++sts[c - 'a'];
             }
             hashTable[sts].emplace_back(str);
         }
-        for (auto  it: hashTable) {
+        for (auto it: hashTable) {
             ans.emplace_back(it.second);
-
-
         }
         return ans;
-
-
-
-
-
-
-
-
-
     }
 };
 
