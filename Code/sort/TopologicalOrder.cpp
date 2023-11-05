@@ -6,47 +6,10 @@
 #include <queue>
 
 using namespace std;
-//
-//class Node {
-//public:
-//    int value;
-//    int in;
-//    int out;
-//    Node *nexts;
-//    Edge *edges;
-//
-//public:
-//
-//    Node(int value) {
-//        this.value = value;
-//        in = 0;
-//        out = 0;
-//        nexts = nullptr;
-//        edges = nullptr;
-//    }
-//}
 
 
-//class Edge {
-//public:
-//    int weight;
-//public:
-//    Node from;
-//public:
-//    Node to;
-//
-//public:
-//
-//    Edge(int weight, Node from, Node to) {
-//        this.weight = weight;
-//        this.from = from;
-//        this.to = to;
-//    }
-//
-//}
 
-
-const int MAX_VERTEX_NUM = 20//图中顶点的最大数量
+const int MAX_VERTEX_NUM = 20;   //图中顶点的最大数量
 
 struct Node {
     int data;
@@ -55,20 +18,18 @@ struct Node {
 
 struct MGraph {
     vector<vector<int>> edges;
-    int edgesCount, nodesCount;
     Node node[MAX_VERTEX_NUM];        //存储图中顶点数据
-
+    int edgesCount, nodesCount;
 };
 
 
 struct ArcNode {
     int adjvex;                //存储边或弧，即另一端顶点在数组中的下标
     struct ArcNode *nextarc;//指向下一个结点
-    char *info;             //记录边或弧的其它信息
+    int info;             //记录边或弧的其它信息
 };
 struct VNode {
     int data;          //顶点的数据域
-    char *info;
     ArcNode *firstarc;//指向下一个结点
 };//存储各链表首元结点的数组
 
@@ -95,6 +56,7 @@ ALGraph *MGraphToALGraph(MGraph graph) {
 
                 ArcNode *arcNode = new ArcNode;
                 arcNode->adjvex = j;
+                arcNode->info=graph.edges[i][j];
                 // head insert
                 arcNode->nextarc = alGraph->vertices[i].firstarc;
                 alGraph->vertices[i].firstarc = arcNode;

@@ -6,27 +6,26 @@
 using namespace std;
 
 
-
-class KMP{
+class KMP1 {
 
 private:
-    string  pat;
+    string pat;
     vector<int> next;
 public:
 
-    KMP(const string & pat):pat(pat){
+    KMP1(const string &pat) : pat(pat) {
         // init next
-        int j=0,k=-1;
+        int j = 0, k = -1;
         next.resize(pat.length());
-        next[0]=-1;
-        while (j<pat.length()-1){
+        next[0] = -1;
+        while (j < pat.length() - 1) {
 
-            if(k==-1 || pat[j]==pat[k]){
+            if (k == -1 || pat[j] == pat[k]) {
                 j++;
                 k++;
-                next[j]=k;
-            }else{
-                k=next[k];
+                next[j] = k;
+            } else {
+                k = next[k];
             }
 
 
@@ -34,46 +33,97 @@ public:
     }
 
 
-    int search(const string & txt ){
-        int i=0,j=0;
-        while (i<txt.length() && j<pat.length()){
+    int search(const string &txt) {
+        int i = 0, j = 0;
+        while (i < txt.length() && j < pat.length()) {
 
-            if(j==-1 || txt[i]==pat[j]){
+            if (j == -1 || txt[i] == pat[j]) {
                 i++;
                 j++;
 
 
-            }else{
-                j=next[j];
+            } else {
+                j = next[j];
             }
 
 
         }
-        if(j>=pat.length()){
-            return i-pat.length();
-        }else{
+        if (j >= pat.length()) {
+            return i - pat.length();
+        } else {
             return -1;
         }
-
-
 
 
     }
 
 
+};
 
+
+class KMP2 {
+
+private:
+    string pat;
+    vector<int> arcnext;
+public:
+
+    KMP2(const string &pat) : pat(pat) {
+        // init next
+        int j = 0, k = -1;
+        arcnext.resize(pat.length());
+        arcnext[0] = -1;
+        while (j < pat.length() - 1) {
+
+            if (k == -1 || pat[j] == pat[k]) {
+                j++;
+                k++;
+                if (pat[j] == pat[k]) {
+                    arcnext[j] = arcnext[k];
+                } else {
+                    arcnext[j] = k;
+                }
+            } else {
+                k = arcnext[k];
+            }
+        } // end init next
+    }
+
+
+    int search(const string &txt) {
+        int i = 0, j = 0;
+        while (i < txt.length() && j < pat.length()) {
+
+            if (j == -1 || txt[i] == pat[j]) {
+                i++;
+                j++;
+
+
+            } else {
+                j = arcnext[j];
+            }
+
+
+        }
+        if (j >= pat.length()) {
+            return i - pat.length();
+        } else {
+            return -1;
+        }
+
+
+    }
 
 
 };
 
 
-int main(){
+int main() {
 
     string res{"abaabc"};
-    KMP * kmp=new KMP(res);
-    int pos=kmp->search("abaabaabcab");
-    cout <<pos<<endl;
-
+    KMP1 *kmp = new KMP1(res);
+    int pos = kmp->search("abaabaabcab");
+    cout << pos << endl;
 
 
     return 0;
