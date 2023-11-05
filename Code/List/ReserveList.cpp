@@ -47,17 +47,13 @@ public:
 
 
 // 反转链表前 N 个节点
-
 class Solution3 {
 private:
     ListNode* nextCur= nullptr; // 后驱节点
 public:
     ListNode *reverseList(ListNode *head,int n) {
-
        reverseN(head,n);
-
     }
-
     ListNode * reverseN(ListNode* head, int n){
         if(n==1){
             nextCur=head->next;
