@@ -150,7 +150,7 @@ namespace Test3 {
             rank.resize(capitalSize);
             for (int i = 0; i < capitalSize; ++i) {
                 parent[i] = i;
-                rank[i] = 1; // 单节点时size=1
+                rank[i] = 1; // 单节点时rank=1
             }
         }
 
@@ -320,20 +320,22 @@ namespace Test5 {
             int findX = findCapital(x);
             int findY = findCapital(y);
             if (findX != findY) {
-                if (parent[findX] <= parent[findY]) {
+                if(parent[findX]<= parent[findY]){
                     // 当y集合的元素个数小于x元素的个数时 将 y 集合合并到 x 集合中
-                    parent[findY] = findX;
+                    parent[findY]=findX;
 
-                } else {
-                    parent[findX] = findY;
+                }else{
+                    parent[findX]=findY;
 
                 }
                 // 当俩颗树相等根节点不同时 高度+1
-                if (parent[findX] == parent[findY]) {
+                if(parent[findX]==parent[findY]){
                     parent[findX]--;
 
                 }
                 unionCount++;
+
+
 
 
             }
